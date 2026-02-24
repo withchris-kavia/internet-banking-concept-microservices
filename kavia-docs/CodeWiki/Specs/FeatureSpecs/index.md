@@ -1,7 +1,7 @@
 ---
 title: "Feature specs"
 codewiki_anchor: true
-codewiki_relpath: "Specs/FeatureSpecs/index.md"
+codewiki_relpath: "CodeWiki/Specs/FeatureSpecs/index.md"
 ---
 
 # Feature specs
