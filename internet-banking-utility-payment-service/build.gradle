@@ -14,7 +14,14 @@ group = 'com.javatodev.finance'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '21'
+	// Use Gradle toolchains so builds/tests work even when JAVA_HOME differs.
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+
+	// Keep explicit compatibility for plugins/tasks that still read these.
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
 }
 
 configurations {

@@ -9,6 +9,36 @@ In this article series I’m going to explain using internet banking API concept
 - [1.0.0](https://github.com/JavatoDev-com/internet-banking-concept-microservices/releases/tag/v.1.0.0) - Initial release with Java 11 and Spring Boot 2.
 - [2.0.0](https://github.com/JavatoDev-com/internet-banking-concept-microservices/releases/tag/v.1.0.0) - Updated version with Java 21, Spring Boot 3.2.4 , Spring Cloud 2023.0.0
 
+### Build / Test (Java 21)
+
+Each microservice is an independent Gradle project (each has its own `gradlew`). The builds are configured to use **Gradle Java toolchains** targeting **Java 21**, so Gradle can compile/test with Java 21 even if your `JAVA_HOME` points elsewhere.
+
+#### Run tests (per service)
+
+From the repository root, `cd` into a service and run:
+
+```shell
+# Example: core-banking-service
+cd core-banking-service
+./gradlew test
+```
+
+#### Run JaCoCo coverage report (per service)
+
+Most services already apply the Spring Boot plugin; JaCoCo can be invoked via Gradle’s built-in task if the plugin is available in the build.
+Try:
+
+```shell
+cd core-banking-service
+./gradlew test jacocoTestReport
+```
+
+The HTML report (when enabled) is typically generated under:
+
+- `build/reports/jacoco/test/html/index.html`
+
+If a given service does not have JaCoCo configured yet, Gradle will report the task as missing; in that case, coverage can be added later as a separate change.
+
 ### Installation
 
 1. Clone the repository:
