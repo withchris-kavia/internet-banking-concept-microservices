@@ -166,6 +166,35 @@ Using the available spreadsheet (Competitive Matrix is unscored) and `project-me
 - Primary platform/framework usage is consistent across sessions (`backend` / `springboot`, both `92` sessions).
 - Toolchain integration readiness via MCP is Not Available because there is no explicit MCP configuration, code, or documentation in the repository evidence used for this report, and the spreadsheet matrix includes MCP as a row but provides no scored evidence.
 
+## 8. Test Execution and Coverage Summary (Latest)
+
+This section summarizes the latest per-service test execution results and JaCoCo coverage outputs across the repository’s microservices. Coverage percentages are reported per service using the JaCoCo “counters” produced by each service’s `jacocoTestReport` output. For services where tests failed, JaCoCo coverage was not generated.
+
+### Overall test execution (all services)
+
+Across 7 microservices, 46 tests were executed. Of these, 42 tests passed, 4 tests failed, and 0 tests were skipped.
+
+### JaCoCo coverage results (services with reports)
+
+The following services successfully generated JaCoCo HTML and XML reports. Percentages below are taken directly from each service’s JaCoCo counters.
+
+| Service | Instruction % | Line % | Branch % | Method % | Class % | HTML report | XML report |
+|---|---:|---:|---:|---:|---:|---|---|
+| internet-banking-user-service | 10.83% | 13.33% | 0.00% | 16.56% | 54.84% | `internet-banking-user-service/build/reports/jacoco/test/html/index.html` | `internet-banking-user-service/build/reports/jacoco/test/jacocoTestReport.xml` |
+| internet-banking-fund-transfer-service | 25.01% | 56.99% | 0.00% | 39.70% | 70.37% | `internet-banking-fund-transfer-service/build/reports/jacoco/test/html/index.html` | `internet-banking-fund-transfer-service/build/reports/jacoco/test/jacocoTestReport.xml` |
+| internet-banking-utility-payment-service | 7.73% | 16.54% | 0.00% | 11.81% | 56.52% | `internet-banking-utility-payment-service/build/reports/jacoco/test/html/index.html` | `internet-banking-utility-payment-service/build/reports/jacoco/test/jacocoTestReport.xml` |
+| internet-banking-config-server | 37.50% | 33.33% | Not reported | 50.00% | 100.00% | `internet-banking-config-server/build/reports/jacoco/test/html/index.html` | `internet-banking-config-server/build/reports/jacoco/test/jacocoTestReport.xml` |
+| internet-banking-service-registry | 37.50% | 33.33% | Not reported | 50.00% | 100.00% | `internet-banking-service-registry/build/reports/jacoco/test/html/index.html` | `internet-banking-service-registry/build/reports/jacoco/test/jacocoTestReport.xml` |
+
+### Services without JaCoCo coverage (coverage not generated)
+
+For the services below, JaCoCo coverage was not generated because the test phase did not complete successfully.
+
+| Service | Why coverage was not generated | Test report |
+|---|---|---|
+| core-banking-service | 3 failing tests prevent `jacocoTestReport` from running (TransactionServiceTest.java:183, UserServiceTest.java:36, UserServiceTest.java:54). | `core-banking-service/build/reports/tests/test/index.html` |
+| internet-banking-api-gateway | `contextLoads()` fails due to missing `spring.security.oauth2.resourceserver.jwt.jwk-set-uri` property. | `internet-banking-api-gateway/build/reports/tests/test/index.html` |
+
 ## 8. Next Steps
 
 ### Checklist
