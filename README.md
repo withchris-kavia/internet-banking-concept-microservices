@@ -128,3 +128,5 @@ Article series
 
 <h1 align="center">Hi 👋, I'm Chinthaka Dinadasa</h1>
 <h3 align="center">A Passionate Java Fullstack Developer from Sri Lanka and Author of JavatoDev.com</h3>
+
+Question: What additional feature would you like to see implemented next in this microservices project?
