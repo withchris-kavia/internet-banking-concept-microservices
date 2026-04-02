@@ -2,13 +2,21 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.4'
     id 'io.spring.dependency-management' version '1.1.4'
+    id 'jacoco'
 }
 
 group = 'com.javatodev.finance'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = '21'
+    // Use Gradle toolchains so builds/tests work even when JAVA_HOME differs.
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+
+    // Keep explicit compatibility for plugins/tasks that still read these.
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -34,4 +42,14 @@ dependencyManagement {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
+        csv.required = false
+    }
 }
